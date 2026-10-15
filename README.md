@@ -2,6 +2,7 @@
 Georgia Tech OMSA Applied Practicum · Sponsor: Mickey Dale Family Foundation Team: Elizabeth Samuel, Kevin Yu, Joshua Roach
 
 **Data note:** This analysis uses Scientific Registry of Transplant Recipients (SRTR) Standard Analysis Files. The data is available through the SRTR under a data use agreement and is not included in this repository.
+
 [Adjusted odds ratios for transplant receipt](images/forest_plot_stage4.png)
 ## Overview
 
