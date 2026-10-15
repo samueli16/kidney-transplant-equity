@@ -19,3 +19,17 @@ I worked on a three-person team where each of us owned one stage of the pipeline
 - Kidney-only registrations (kidney-pancreas and pancreas-alone listings excluded)
 - About 370,000 patients with known outcomes in the Stage 4 analysis
 
+## Approach (Stage 4)
+ 
+- **Outcome variable:** built a binary `RECEIVED_TX` flag from waitlist removal codes, excluding patients removed in error or transplanted abroad
+- **Merge:** joined the waitlist and transplant files on patient ID with a left join, keeping all resolved waitlist patients; documented a linkage gap in older records as a limitation
+- **Policy era split:** divided patients into pre- and post-reform cohorts at September 2021, when the race-free eGFR equation was recommended and centers began adopting it, rather than at the July 2022 mandate date
+- **Models:** fit separate logistic regression models for each cohort (one-hot encoded categoricals, standardized features), so the effects of race and insurance could differ between eras
+- **Sensitivity analysis:** re-ran both models treating still-active waitlist patients as non-recipients to test robustness
+
+## Key findings
+ 
+- **Disparities compound across the pipeline.** A Black patient on Medicaid was less likely to be listed before starting dialysis, waited longer after starting dialysis to reach the waitlist, and had lower odds of ever receiving a transplant, even after accounting for clinical factors.
+- **The policy fix helped unevenly.** The extra active waitlist time for Black candidates dropped from about 30% to about 6%, but referral delays barely moved. Black patients still waited about 114 more days to get listed after starting dialysis.
+- **Insurance mattered at every stage.** Private insurance was associated with higher odds of transplant receipt in both eras (OR 1.093 pre-reform, 1.045 post-reform, vs. Medicaid), though the advantage shrank after the reform.
+- **The raw numbers can mislead.** Unadjusted, White Medicaid patients had a lower transplant rate (65.5%) than Black Medicaid patients (67.4%). That reversal likely reflects differences in age and medical complexity, which is why adjusted modeling matters for equity questions.
