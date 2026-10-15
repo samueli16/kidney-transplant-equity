@@ -33,3 +33,16 @@ I worked on a three-person team where each of us owned one stage of the pipeline
 - **The policy fix helped unevenly.** The extra active waitlist time for Black candidates dropped from about 30% to about 6%, but referral delays barely moved. Black patients still waited about 114 more days to get listed after starting dialysis.
 - **Insurance mattered at every stage.** Private insurance was associated with higher odds of transplant receipt in both eras (OR 1.093 pre-reform, 1.045 post-reform, vs. Medicaid), though the advantage shrank after the reform.
 - **The raw numbers can mislead.** Unadjusted, White Medicaid patients had a lower transplant rate (65.5%) than Black Medicaid patients (67.4%). That reversal likely reflects differences in age and medical complexity, which is why adjusted modeling matters for equity questions.
+
+## Model performance
+ 
+![ROC curves for pre- and post-reform models](images/roc_curve_stage4.png)
+ 
+ROC-AUC was 0.630 pre-reform and 0.598 post-reform. Moderate discrimination is expected here: organ availability and waitlist dynamics drive much of the outcome and aren't captured in patient-level data. The goal was to explain disparities, not to predict who gets a transplant.
+
+## Limitations and next steps
+ 
+- Post-reform results shifted in the sensitivity analysis because many recently listed patients hadn't had time to receive a transplant yet, so they should be read with caution until more follow-up data is available.
+- The reference category for race in Stage 4 was Asian patients (from the encoding order), so Black–White comparisons are clearer in the earlier stages.
+- Next steps would be joining the three stages into one end-to-end pipeline, building a dashboard that lets the sponsor filter by region, and monitoring for drift as new policies take effect.
+
